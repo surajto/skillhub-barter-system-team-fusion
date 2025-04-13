@@ -9,8 +9,8 @@ import java.util.Objects;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, nullable = false)
-    private Long stu_id;
+    @Column(nullable = false)
+    private long stu_id;
 
     @Column(nullable = false)
     private String stu_name;

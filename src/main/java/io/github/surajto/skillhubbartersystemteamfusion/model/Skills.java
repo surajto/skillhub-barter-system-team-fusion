@@ -24,14 +24,13 @@ public class Skills {
      * This is foreign key so that we can find out which user have which skills
      */
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "stu_id")
     private Student student;
 
     public Skills() {
     }
 
-    public Skills(long skill_id, String skill_name, String skill_description, String skill_level, Student student) {
-        this.skill_id = skill_id;
+    public Skills(String skill_name, String skill_description, String skill_level, Student student) {
         this.skill_name = skill_name;
         this.skill_description = skill_description;
         this.skill_level = skill_level;

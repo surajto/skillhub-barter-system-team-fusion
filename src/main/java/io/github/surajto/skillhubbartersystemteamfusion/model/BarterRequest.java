@@ -8,7 +8,7 @@ public class BarterRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     /**
      * Unique foreign key for sender
@@ -34,4 +34,6 @@ public class BarterRequest {
     private String status;
 
     private String message;
+
+
 }
