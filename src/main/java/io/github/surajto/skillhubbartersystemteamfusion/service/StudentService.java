@@ -14,7 +14,9 @@ public interface StudentService {
 
     Student getStudentByName(String name);
 
-    Student updateStudentName(long id, double newName);
+    Student getStudentByEmail(String email);
+
+    Student updateStudentName(long id, String newName);
 
     Student updateStudentEmail(long id, String newEmail);
 
@@ -22,5 +24,5 @@ public interface StudentService {
 
     Student updateStudentPassword(long id, String newPassword);
 
-    Student deleteStudent(long id);
+    boolean deleteStudent(long id);
 }

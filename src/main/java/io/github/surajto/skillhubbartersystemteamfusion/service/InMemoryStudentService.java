@@ -46,27 +46,57 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student updateStudentName(long id, double newName) {
+    public Student getStudentByEmail(String email){
+        for(Student student : students){
+            if (student.getStu_email().equals(email)){
+                return student;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Student updateStudentName(long id, String newName) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setStu_name(newName);
+        }
         return null;
     }
 
     @Override
     public Student updateStudentEmail(long id, String newEmail) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setStu_email(newEmail);
+        }
         return null;
     }
 
     @Override
     public Student updateStudentPhone(long id, String newPhone) {
+        Student student = getStudentById(id);
+        if(student != null){
+            student.setStu_phone(newPhone);
+        }
         return null;
     }
 
     @Override
     public Student updateStudentPassword(long id, String newPassword) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setStu_password(newPassword);
+        }
         return null;
     }
 
     @Override
-    public Student deleteStudent(long id) {
-        return null;
+    public boolean deleteStudent(long id) {
+            Student student = getStudentById(id);
+            if (student != null) {
+                students.remove(student);
+            }
+        return true;
     }
 }

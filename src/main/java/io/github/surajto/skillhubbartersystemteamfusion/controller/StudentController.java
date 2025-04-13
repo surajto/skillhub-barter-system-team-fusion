@@ -37,9 +37,62 @@ public class StudentController {
         return studentService.getStudentById(id);
     }
 
-    @GetMapping("/name")
-    public Student getStudentByName(@RequestParam String name){
+    @GetMapping("/name/{name}")
+    public Student getStudentByName(@PathVariable String name) {
         return studentService.getStudentByName(name);
     }
 
+    @GetMapping("/email/{email}")
+    public Student getStudentByEmail(@PathVariable String email){
+        return studentService.getStudentByEmail(email);
+    }
+
+    @PutMapping("/updateName/{id}/{newName}")
+    public Student updateStudentName(@PathVariable long id, @PathVariable String newName){
+        Student student = studentService.getStudentById(id);
+        if(student != null){
+            student.setStu_name(newName);
+            return student;
+        }
+        return null;
+    }
+
+    @PutMapping("/updatePhone/{id}/{newPhone}")
+    public Student updateStudentPhone(@PathVariable long id, @PathVariable String newPhone) {
+        Student student = studentService.getStudentById(id);
+        if (student != null) {
+            student.setStu_phone(newPhone);
+            return student;
+        }
+        return null;
+    }
+
+    @PutMapping("/updateEmail/{id}/{newEmail}")
+    public Student updateStudentEmail(@PathVariable long id, @PathVariable String newEmail) {
+        Student student = studentService.getStudentById(id);
+        if (student != null) {
+            student.setStu_email(newEmail);
+            return student;
+        }
+        return null;
+    }
+
+    @PutMapping("/updatePassword/{id}/{newPassword}")
+    public Student updateStudentPassword(@PathVariable long id, @PathVariable String newPassword) {
+        Student student = studentService.getStudentById(id);
+        if (student != null) {
+            student.setStu_password(newPassword);
+            return student;
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public Student deleteStudentById(@PathVariable long id){
+        boolean delete = studentService.deleteStudent(id);
+        if (delete) {
+            System.out.println("Student with id " + id + " deleted successfully");
+        }
+        return null;
+    }
 }
