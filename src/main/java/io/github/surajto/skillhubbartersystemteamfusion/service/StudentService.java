@@ -3,6 +3,7 @@ package io.github.surajto.skillhubbartersystemteamfusion.service;
 import io.github.surajto.skillhubbartersystemteamfusion.model.Student;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface StudentService {
@@ -14,9 +15,11 @@ public interface StudentService {
 
     Student getStudentByName(String name);
 
-    Student updateStudentName(long id, double newName);
+    Student getStudentByEmail(String email);
 
-    Student updateStudentEmail(long id, String newEmail);
+    Optional<Student> updateStudentName(long id, String newName);
+
+    Optional<Student> updateStudentEmail(long id, String newEmail);
 
     Student updateStudentPhone(long id, String newPhone);
 

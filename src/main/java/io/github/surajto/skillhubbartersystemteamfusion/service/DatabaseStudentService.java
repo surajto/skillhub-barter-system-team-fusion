@@ -36,18 +36,30 @@ public class DatabaseStudentService implements StudentService {
 
     @Override
     public Student getStudentByName(String name) {
-        Optional<Student> student = studentRepository.findByName(name);
+        Optional<Student> student = studentRepository.findBystu_name(name);
         return student.orElse(null);
     }
 
     @Override
-    public Student updateStudentName(long id, double newName) {
+    public Student getStudentByEmail(String email) {
+        Optional<Student> student = studentRepository.findBystu_email(email);
+        return student.orElse(null);
+    }
+
+    @Override
+    public Optional<Student> updateStudentName(long id, String newName)  {
+        Optional<Student> optionalStudent = studentRepository.findById(id);
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+            student.setStu_name(newName);
+            return Optional.of(studentRepository.save(student));
+        }
         return null;
     }
 
     @Override
-    public Student updateStudentEmail(long id, String newEmail) {
-        return null;
+    public Optional<Student> updateStudentEmail(long id, String newEmail) {
+        return Optional.empty();
     }
 
     @Override

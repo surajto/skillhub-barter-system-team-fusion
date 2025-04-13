@@ -1,5 +1,6 @@
 package io.github.surajto.skillhubbartersystemteamfusion.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -22,6 +23,7 @@ public class Student {
     private String stu_phone;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String stu_password;
 
     public Student() {

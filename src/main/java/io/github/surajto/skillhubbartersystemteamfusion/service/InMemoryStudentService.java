@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * StudentService class for managing Students operations.
@@ -46,13 +47,31 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student updateStudentName(long id, double newName) {
+    public Student getStudentByEmail(String email){
+        for(Student student : students){
+            if (student.getStu_email().equals(email)){
+                return student;
+            }
+        }
         return null;
     }
 
     @Override
-    public Student updateStudentEmail(long id, String newEmail) {
-        return null;
+    public Optional<Student> updateStudentName(long id, String newName) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setStu_name(newName);
+        }
+        return Optional.ofNullable(student);
+    }
+
+    @Override
+    public Optional<Student> updateStudentEmail(long id, String newEmail) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setStu_name(newEmail);
+        }
+        return Optional.ofNullable(student);
     }
 
     @Override
