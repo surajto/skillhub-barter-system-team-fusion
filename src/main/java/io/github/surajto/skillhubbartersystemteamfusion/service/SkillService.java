@@ -1,8 +1,17 @@
 package io.github.surajto.skillhubbartersystemteamfusion.service;
 
-import org.springframework.stereotype.Service;
+import io.github.surajto.skillhubbartersystemteamfusion.model.Skill;
+import io.github.surajto.skillhubbartersystemteamfusion.model.Student;
 
-public class SkillService {
+import java.util.List;
 
+public interface SkillService {
 
+    Skill addSkill(Skill skill);
+
+    List<Skill> getSkillsByUserId(long userId);
+
+    List<Student> getUsersBySkillName(String skillName);
+
+    void deleteSkill(Long skillId);
 }
