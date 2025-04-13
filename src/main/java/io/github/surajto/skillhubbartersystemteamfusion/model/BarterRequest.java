@@ -3,37 +3,79 @@ package io.github.surajto.skillhubbartersystemteamfusion.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "barter")
+@Table(name = "barter_request")
 public class BarterRequest {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private long id;
 
-    /**
-     * Unique foreign key for sender
-     */
     @ManyToOne
-    @JoinColumn(name = "sender_id")
+    @JoinColumn(name = "sender_id", nullable = false)
     private Student sender;
 
-    /**
-     * Unique foreign key for receiver
-     */
     @ManyToOne
-    @JoinColumn(name = "receiver_id")
+    @JoinColumn(name = "receiver_id", nullable = false)
     private Student receiver;
 
-    /**
-     *  Unique foreign key for skill
-     */
-    @ManyToOne
-    @JoinColumn(name = "skill_id")
-    private Skills skill;
+    @Column(nullable = false)
+    private String status; // e.g., "Pending", "Accepted", "Rejected"
 
-    private String status;
-
+    @Column
     private String message;
+
+    @Column(nullable = false)
+    private long skill_id;
+
+    public BarterRequest() {
+    }
+
+    public BarterRequest(Student sender, Student receiver, String status, String message) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.status = status;
+        this.message = message;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Student getSender() {
+        return sender;
+    }
+
+    public void setSender(Student sender) {
+        this.sender = sender;
+    }
+
+    public Student getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(Student receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
 
 }
