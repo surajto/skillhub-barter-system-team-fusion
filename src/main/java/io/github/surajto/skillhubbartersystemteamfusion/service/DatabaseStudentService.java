@@ -5,6 +5,7 @@ import io.github.surajto.skillhubbartersystemteamfusion.repository.StudentReposi
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DatabaseStudentService implements StudentService {
@@ -23,17 +24,20 @@ public class DatabaseStudentService implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        return List.of();
+        List<Student> students = studentRepository.findAll();
+        return students;
     }
 
     @Override
     public Student getStudentById(long id) {
-        return null;
+        Optional<Student> student = studentRepository.findById(id);
+        return student.orElse(null);
     }
 
     @Override
     public Student getStudentByName(String name) {
-        return null;
+        Optional<Student> student = studentRepository.findByName(name);
+        return student.orElse(null);
     }
 
     @Override

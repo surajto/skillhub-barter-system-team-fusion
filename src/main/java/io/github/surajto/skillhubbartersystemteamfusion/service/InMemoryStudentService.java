@@ -22,16 +22,26 @@ public class InMemoryStudentService implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        return List.of();
+        return students;
     }
 
     @Override
     public Student getStudentById(long id) {
+        for(Student student : students) {
+            if(student.getStu_id() == id){
+                return student;
+            }
+        }
         return null;
     }
 
     @Override
     public Student getStudentByName(String name) {
+        for(Student student: students){
+            if(student.getStu_name().equals(name)){
+                return student;
+            }
+        }
         return null;
     }
 
