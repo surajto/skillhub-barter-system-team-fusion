@@ -125,7 +125,7 @@ public class DatabaseStudentService implements StudentService {
         }
         student.get().setStu_name(newName);
         studentRepository.save(student.get());
-        return student.get();
+        return student.get();  
     }
 
     /**

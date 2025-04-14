@@ -1,5 +1,6 @@
 package io.github.surajto.skillhubbartersystemteamfusion.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -59,6 +60,7 @@ public class Student {
     @NotBlank(message = "Student password is required")
     @Size(min = 10, message = "Password should be atleast 10 characters")
     @Column(nullable = false)
+    @JsonIgnore
     private String stu_password;
 
     /**

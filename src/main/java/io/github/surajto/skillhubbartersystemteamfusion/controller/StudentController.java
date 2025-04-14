@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +52,7 @@ public class StudentController {
      * @return ResponseEntity containing list of all students
      */
     @GetMapping
+
     public ResponseEntity<List<Student>> getAllStudents(){
         List<Student> students = studentService.getAllStudents();
         return ResponseEntity.ok(students);
@@ -65,17 +65,19 @@ public class StudentController {
      * @return ResponseEntity with the student if found, or 404 if not found
      */
     @GetMapping("/{id}")
+
     public ResponseEntity<Student> getStudentById(@PathVariable long id){
         Student student = studentService.getStudentById(id);
         return ResponseEntity.ok(student);
     }
-
+  
     /**
      * Retrieves a student by name.
      *
      * @param name the name of the student
      * @return the student object if found
      */
+  
     @GetMapping("/name/{name}")
     public Student getStudentByName(@PathVariable String name) {
         return studentService.getStudentByName(name);
@@ -176,3 +178,4 @@ public class StudentController {
     }
 
 }
+
