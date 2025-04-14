@@ -11,19 +11,23 @@ public interface StudentService {
 
     List<Student> getAllStudents();
 
-    Student getStudentById(long id);
+    Student getStudentById(Long id);
 
     Student getStudentByName(String name);
 
     Student getStudentByEmail(String email);
-
+  
     Optional<Student> updateStudentName(long id, String newName);
 
     Optional<Student> updateStudentEmail(long id, String newEmail);
 
-    Student updateStudentPhone(long id, String newPhone);
+    Student updateStudentName(Long id, String newName);
 
-    Student updateStudentPassword(long id, String newPassword);
+    Student updateStudentEmail(Long id, String newEmail);
 
-    Student deleteStudent(long id);
+    Student updateStudentPhone(Long id, Long newPhone);
+
+    Student updateStudentPassword(Long id, String newPassword);
+
+    boolean deleteStudent(long id);
 }
