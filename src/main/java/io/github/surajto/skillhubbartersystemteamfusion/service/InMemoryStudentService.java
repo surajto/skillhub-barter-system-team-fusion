@@ -1,5 +1,6 @@
 package io.github.surajto.skillhubbartersystemteamfusion.service;
 
+import io.github.surajto.skillhubbartersystemteamfusion.Exception.StudentValidationException;
 import io.github.surajto.skillhubbartersystemteamfusion.model.Student;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student getStudentById(long id) {
+    public Student getStudentById(Long id) {
         for(Student student : students) {
             if(student.getStu_id() == id){
                 return student;
@@ -56,7 +57,7 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student updateStudentName(long id, String newName) {
+    public Student updateStudentName(Long id, String newName) {
         Student student = getStudentById(id);
         if (student != null) {
             student.setStu_name(newName);
@@ -65,7 +66,7 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student updateStudentEmail(long id, String newEmail) {
+    public Student updateStudentEmail(Long id, String newEmail) {
         Student student = getStudentById(id);
         if (student != null) {
             student.setStu_email(newEmail);
@@ -74,7 +75,7 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student updateStudentPhone(long id, String newPhone) {
+    public Student updateStudentPhone(Long id, Long newPhone) {
         Student student = getStudentById(id);
         if(student != null){
             student.setStu_phone(newPhone);
@@ -83,7 +84,7 @@ public class InMemoryStudentService implements StudentService {
     }
 
     @Override
-    public Student updateStudentPassword(long id, String newPassword) {
+    public Student updateStudentPassword(Long id, String newPassword) {
         Student student = getStudentById(id);
         if (student != null) {
             student.setStu_password(newPassword);
@@ -93,10 +94,6 @@ public class InMemoryStudentService implements StudentService {
 
     @Override
     public boolean deleteStudent(long id) {
-            Student student = getStudentById(id);
-            if (student != null) {
-                students.remove(student);
-            }
         return true;
     }
 }
